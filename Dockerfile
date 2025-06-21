@@ -11,7 +11,7 @@ COPY ./frontend/ ./
 RUN npm run build --verbose
 
 # Setup Container and install Flask backend
-FROM python:3.11-alpine as deploy-stage
+FROM python:3.12-alpine as deploy-stage
 
 # Set environment variables
 ENV PYTHONIOENCODING=UTF-8
