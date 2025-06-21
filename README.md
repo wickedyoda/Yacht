@@ -7,11 +7,7 @@
 <a href="https://m.do.co/c/d4aa430d72d9">
 <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_blue.png" width="30%"  alt="Yacht Logo From Github"/>
 </a>
-
-## This applicaton has not been updated in a while, I have brought it up to date as much as possible for security. Under the "wicked-testdeploy" branch. But this will not fully build. 
-
-## However, there is a new version at https://github.com/SelfhostedPro/yacht-nuxt that is almost complete. 
-
+### I am currently working on this repo to bring it up to date, patience and we will get there soon. 
 ### wickedyoda
 
 ## Yacht
