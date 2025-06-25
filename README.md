@@ -1,12 +1,5 @@
-![logo](https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht_logo_1_dark.png "templates")
+![logo](https://raw.githubusercontent.com/wickedyoda/Yacht/master/readme_media/Yacht_logo_1_dark.png "templates")
 
-[![Docker Hub Pulls](https://img.shields.io/docker/pulls/selfhostedpro/yacht?color=%2341B883&label=Docker%20Pulls&logo=docker&logoColor=%2341B883&style=for-the-badge)](https://hub.docker.com/r/selfhostedpro/yacht)
-[![Docker Image Size](https://img.shields.io/docker/image-size/selfhostedpro/yacht/vue?color=%2341B883&label=Image%20Size&logo=docker&logoColor=%2341B883&style=for-the-badge)](https://hub.docker.com/r/selfhostedpro/yacht)
-[![Open Collective](https://img.shields.io/opencollective/all/selfhostedpro.svg?color=%2341B883&logoColor=%2341B883&style=for-the-badge&label=Supporters&logo=open%20collective)](https://opencollective.com/selfhostedpro "please consider helping me by either donating or contributing")
-
-<a href="https://m.do.co/c/d4aa430d72d9">
-<img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PoweredByDO/DO_Powered_by_Badge_blue.png" width="30%"  alt="Yacht Logo From Github"/>
-</a>
 ### I am currently working on this repo to bring it up to date, patience and we will get there soon. 
 ### wickedyoda
 
@@ -20,7 +13,7 @@ Yacht is a container management UI with a focus on templates and 1-click deploym
 
 ## Demo:
 
-![Tempaltes](https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/Yacht-Demo.gif "templates")
+![Tempaltes](https://raw.githubusercontent.com/Wickedyoda/Yacht/master/readme_media/Yacht-Demo.gif "templates")
 
 ## Installation:
 
@@ -32,13 +25,6 @@ Installation documentation can be found [here](https://dev.yacht.sh/docs/Install
 
 Check out the getting started guide if this is the first time you've used Yacht: https://dev.yacht.sh/docs/Installation/Getting_Started
 
-**Yacht is also available via the DigitalOcean marketplace:**
-
-[![DigitalOcean](https://raw.githubusercontent.com/SelfhostedPro/Yacht/master/readme_media/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/yacht?refcode=b68dee19dbf6)
-
-**We can also be found on Linode**
-
-[`<img src="https://www.linode.com/wp-content/uploads/2021/01/Linode-Logo-Black.svg" width="200" >`](https://www.linode.com/marketplace/apps/selfhostedpro/yacht/)
 
 ## Features So Far:
 
@@ -66,7 +52,7 @@ Currently Yacht is compatible with portainer templates. You'll add a template ur
 We recommend starting with:
 
 ```
-https://raw.githubusercontent.com/SelfhostedPro/selfhosted_templates/yacht/Template/template.json
+https://raw.githubusercontent.com/wickeyoda/selfhosted_templates/yacht/Template/template.json
 ```
 
 In templates you are able to define variables (starting with `!`) to have them automatically replaced by whatever variable the user has set in their server settings (ie. `!config` will be replaced by `/yacht/AppData/Config` by default).
