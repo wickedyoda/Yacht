@@ -20,7 +20,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  # Repository name used on Docker Hub
+  # Repository name used on Docker Hub for tagging images
   DOCKERHUB_REPO_NAME: ${{ vars.DOCKERHUB_REPO_NAME }}
 
 
