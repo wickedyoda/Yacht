@@ -16,7 +16,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
   # Repository name used on Docker Hub
-  DOCKERHUB_REPO: ${{ github.event.repository.name }}
+  DOCKERHUB_REPO_NAME: ${{ vars.DOCKERHUB_REPO_NAME }}
 
 
 jobs:
@@ -75,7 +75,7 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO }}
+            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO_NAME }}
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
