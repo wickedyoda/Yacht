@@ -1,9 +1,14 @@
   name: Docker
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
-    types: [ closed ]
+    branches:
+      - main
+    types:
+      - closed
 
 env:
   REGISTRY: ghcr.io
