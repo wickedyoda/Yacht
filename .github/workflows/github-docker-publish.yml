@@ -1,7 +1,9 @@
-  name: Docker
+---
+# yamllint disable rule:line-length
+name: Docker
 
-on:
-  workflow_dispatch:   # enables “Run workflow” button
+'on':
+  workflow_dispatch: {}  # enables "Run workflow" button
   push:
     branches:
       - main
@@ -42,15 +44,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Extract Docker metadata
-          id: meta
-          uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
-          with:
-            images: ghcr.io/${{ github.repository }}
-            tags: |
-              type=ref,event=branch
-              type=semver,pattern={{version}}
-              type=raw,value=latest
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934  # v5.0.0
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=raw,value=latest
 
       - name: Build and push Docker image
         id: build-and-push
