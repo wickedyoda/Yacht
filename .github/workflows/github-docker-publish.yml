@@ -1,7 +1,9 @@
-  name: Docker
+---
+# yamllint disable rule:line-length
+name: Docker
 
-on:
-  workflow_dispatch:   # enables “Run workflow” button
+'on':
+  workflow_dispatch: {}  # enables "Run workflow" button
   push:
     branches:
       - main
@@ -17,6 +19,9 @@ env:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        arch: [amd64, arm64]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -32,6 +37,9 @@ jobs:
         with:
           cosign-release: 'v2.2.4'
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226
 
@@ -42,15 +50,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Extract Docker metadata
-          id: meta
-          uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
-          with:
-            images: ghcr.io/${{ github.repository }}
-            tags: |
-              type=ref,event=branch
-              type=semver,pattern={{version}}
-              type=raw,value=latest
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934  # v5.0.0
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch,suffix=-${{ matrix.arch }}
+            type=semver,pattern={{version}},suffix=-${{ matrix.arch }}
+            type=raw,value=latest,suffix=-${{ matrix.arch }}
 
       - name: Build and push Docker image
         id: build-and-push
@@ -58,6 +66,7 @@ jobs:
         with:
           context: .
           push: true
+          platforms: linux/${{ matrix.arch }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
