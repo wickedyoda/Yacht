@@ -20,14 +20,6 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-<<<<<<< codex/add-dockerhub_token-for-login
-  # Repository name used on Docker Hub for tagging images
-  DOCKERHUB_REPO_NAME: ${{ vars.DOCKERHUB_REPO_NAME }}
-=======
-  # Repository name used on Docker Hub
-  DOCKERHUB_REPO: ${{ github.event.repository.name }}
->>>>>>> main
-
 
 jobs:
   build:
@@ -85,11 +77,7 @@ jobs:
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-<<<<<<< codex/add-dockerhub_token-for-login
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO_NAME }}
-=======
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO }}
->>>>>>> main
+
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
