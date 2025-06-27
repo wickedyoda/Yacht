@@ -56,6 +56,9 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
+            type=ref,event=branch,suffix=-${{ matrix.arch }}
+            type=semver,pattern={{version}},suffix=-${{ matrix.arch }}
+            type=raw,value=latest,suffix=-${{ matrix.arch }}
 
       - name: Build and push Docker image
         id: build-and-push
@@ -100,7 +103,7 @@ jobs:
 
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934
+        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934  # v5.0.0
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
