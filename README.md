@@ -9,21 +9,15 @@ Yacht is a container management UI with a focus on templates and 1-click deploym
 
 **I'm currently rewriting the backend in Typescript as an attempt to have a language that more people would contribute to. You can follow development of that [here](https://github.com/wickedyoda/yacht-nuxt).**
 
-**Please note, that while we are rewriting the back end. The Yacht.sh website is outdated on its instructions, please visit https://dev.yacht.sh for now. The main Yacht.sh site will be updated with the new release.**
-
-## Demo:
-
 ![Tempaltes](https://raw.githubusercontent.com/Wickedyoda/Yacht/master/readme_media/Yacht-Demo.gif "templates")
 
 ## Installation:
 
+Installation instructions can be found here: https://wickedyoda.com/?p=3088
+
 Currently only linux has been verified as working but we are open to the idea of supporting windows eventually as well.
 
 **Keep in mind, this is an alpha so the risk of data loss is real and it may not be stable**
-
-Installation documentation can be found [here](https://dev.yacht.sh/docs/Installation/Install).
-
-Check out the getting started guide if this is the first time you've used Yacht: https://dev.yacht.sh/docs/Installation/Getting_Started
 
 
 ## Features So Far:
