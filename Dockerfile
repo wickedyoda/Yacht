@@ -11,7 +11,7 @@ COPY ./frontend/ ./
 RUN npm run build --verbose
 
 # Setup Container and install Flask backend
-FROM --platform=$TARGETPLATFORM python:3.12-slim as deploy-stage
+FROM --platform=$TARGETPLATFORM python:3.11-slim as deploy-stage
 
 # Set environment variables
 ENV PYTHONIOENCODING=UTF-8
