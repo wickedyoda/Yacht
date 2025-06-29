@@ -93,4 +93,4 @@ docker run --rm -d -v /var/run/docker.sock:/var/run/docker.sock containrrr/watch
 
 ## License
 
-[MIT License](LICENSE.md)
+[Creative Commons Attribution 4.0 International License](LICENSE.md)
