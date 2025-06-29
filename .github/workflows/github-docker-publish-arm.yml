@@ -1,6 +1,6 @@
 ---
 # yamllint disable rule:line-length
-name: Docker
+name: Docker ARM64
 
 'on':
   workflow_dispatch: {}  # enables "Run workflow" button
@@ -16,7 +16,7 @@ name: Docker
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  ARCH: amd64
+  ARCH: arm64
 
 jobs:
   build:
@@ -62,6 +62,7 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09
         with:
           context: .
+          file: ./Dockerfile-ARM64
           push: true
           platforms: linux/${{ env.ARCH }}
           tags: ${{ steps.meta.outputs.tags }}
