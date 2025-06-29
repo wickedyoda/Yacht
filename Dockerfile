@@ -1,5 +1,5 @@
 # Build Vue.js frontend
-FROM node:20 as build-stage
+FROM node:20 AS build-stage
 
 ARG VUE_APP_VERSION
 ENV VUE_APP_VERSION=${VUE_APP_VERSION}
@@ -11,7 +11,7 @@ COPY ./frontend/ ./
 RUN npm run build --verbose
 
 # Setup Container and install Flask backend
-FROM python:3.11-slim as deploy-stage
+FROM python:3.11-slim AS deploy-stage
 
 # Set environment variables
 ENV PYTHONIOENCODING=UTF-8
@@ -24,6 +24,7 @@ COPY ./backend/requirements.txt ./
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
+    pkg-config \
     libffi-dev \
     libssl-dev \
     libpq-dev \
