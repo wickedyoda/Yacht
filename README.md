@@ -91,6 +91,10 @@ Additional information about this can be found in the [Post-installation steps f
 docker run --rm -d -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower:latest --cleanup --run-once <container-name>
 ```
 
+## Changes from the original project
+
+For a summary of how this fork differs from SelfhostedPro's version of Yacht, see [changes.md](changes.md).
+
 ## License
 
-[MIT License](LICENSE.md)
+[Creative Commons Attribution 4.0 International License](LICENSE.md)
