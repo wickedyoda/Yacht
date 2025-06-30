@@ -1,45 +1,23 @@
-# Single stage image using Python only
-FROM python:3.11-slim as deploy-stage
+# Build Vue.js frontend
+FROM node:20 AS build-stage
 
-# Set environment variables
-ENV PYTHONIOENCODING=UTF-8
+ARG VUE_APP_VERSION
+ENV VUE_APP_VERSION=${VUE_APP_VERSION}
+
+WORKDIR /app
+COPY ./frontend/package*.json ./
+RUN npm install --verbose
+COPY ./frontend/ ./
+RUN npm run build --verbose
+
+# Deploy stage running only Node
+FROM node:20-slim AS deploy-stage
+WORKDIR /app
+COPY --from=build-stage /app/dist ./dist
+COPY ./backend-js/package*.json ./backend-js/
+WORKDIR /app/backend-js
+RUN npm install --production --verbose
 ENV THEME=Default
-
-WORKDIR /api
-COPY ./backend/requirements.txt ./
-
-# Install build dependencies and system libraries
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    build-essential \
-    libffi-dev \
-    libssl-dev \
-    libpq-dev \
-    default-libmysqlclient-dev \
-    libjpeg-dev \
-    zlib1g-dev \
-    libyaml-dev \
-    python3-dev \
-    curl && \
-    rm -rf /var/lib/apt/lists/*
-
-# Install Docker Compose 2.x as a standalone binary
-RUN curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
-    chmod +x /usr/local/bin/docker-compose
-
-# Upgrade pip, setuptools, and wheel
-RUN pip3 install --upgrade pip setuptools wheel
-
-# Install Python packages from requirements.txt
-RUN pip3 install -r requirements.txt --no-cache-dir --verbose
-
-# Clean up build dependencies
-RUN apt-get purge -y --auto-remove build-essential python3-dev && \
-    rm -rf /root/.cache /tmp/*
-
-# Copy the backend code
-COPY ./backend/ ./
-
-# Expose ports and define the command to run the application
+ENV PORT=5000
 EXPOSE 5000
-CMD ["python3", "app.py"]
+CMD ["node", "server.js"]

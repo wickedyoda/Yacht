@@ -3,5 +3,6 @@ cd /
 UMASK_SET=${UMASK_SET:-022}
 umask "$UMASK_SET"
 
+cd /app/backend-js
 exec \
-    s6-setuidgid abc python3 /api/app.py
+    s6-setuidgid abc node server.js

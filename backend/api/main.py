@@ -17,7 +17,7 @@ from api.db.crud.users import create_user, get_users
 from api.routers import apps, app_settings, compose, resources, templates, users
 from api.db.crud.templates import read_template_variables, set_template_variables
 
-app = FastAPI()
+app = FastAPI(root_path="/api")
 
 settings = Settings()
 
