@@ -1,16 +1,4 @@
-# Build Vue.js frontend
-FROM node:20 AS build-stage
-
-ARG VUE_APP_VERSION
-ENV VUE_APP_VERSION=${VUE_APP_VERSION}
-
-WORKDIR /app
-COPY ./frontend/package*.json ./
-RUN npm install --verbose
-COPY ./frontend/ ./
-RUN npm run build --verbose
-
-# Setup Container and install Flask backend
+# Single stage image using Python only
 FROM python:3.11-slim AS deploy-stage
 
 # Set environment variables
@@ -33,8 +21,6 @@ RUN apt-get update && \
     zlib1g-dev \
     libyaml-dev \
     python3-dev \
-    ruby-dev \
-    nginx \
     curl && \
     rm -rf /var/lib/apt/lists/*
 
@@ -48,11 +34,8 @@ RUN pip3 install --upgrade pip setuptools wheel --break-system-packages
 # Install Python packages from requirements.txt
 RUN pip3 install -r requirements.txt --no-cache-dir --verbose --break-system-packages
 
-# Install SASS via gem
-RUN gem install sass --verbose
-
 # Clean up build dependencies
-RUN apt-get purge -y --auto-remove build-essential python3-dev ruby-dev && \
+RUN apt-get purge -y --auto-remove build-essential python3-dev && \
     rm -rf /root/.cache /tmp/*
 
 # Copy the backend code
