@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv bash
-ROOT_DIR=/app
+ROOT_DIR=/app/dist
 
 # Replace env vars in JavaScript files
 echo "Replacing env constants in JS"
@@ -7,7 +7,7 @@ for file in $ROOT_DIR/js/app.*.js* $ROOT_DIR/index.html;
 do
   echo "Processing $file ...";
 
-  sed -i 's|VUE_APP_THEME|'${THEME}'|g' $file 
+  sed -i 's|VUE_APP_THEME|'${THEME}'|g' $file
   sed -i 's|VUE_APP_LOGO|'${LOGO}'|g' $file
   # sed -i 's|VUE_APP_VERSION|'${VERSION}'|g' $file
 

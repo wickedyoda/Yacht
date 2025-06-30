@@ -3,7 +3,6 @@ cd /
 UMASK_SET=${UMASK_SET:-022}
 umask "$UMASK_SET"
 
+cd /app/backend-js
 exec \
-	s6-setuidgid abc uvicorn \
-    --uds /tmp/gunicorn.sock \
-    api.main:app
+    s6-setuidgid abc node server.js

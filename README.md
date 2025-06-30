@@ -9,6 +9,8 @@ Yacht is a container management UI with a focus on templates and 1-click deploym
 
 **I'm currently rewriting the backend in Typescript as an attempt to have a language that more people would contribute to. You can follow development of that [here](https://github.com/wickedyoda/yacht-nuxt).**
 
+This version runs entirely on Node 20 with an Express backend serving the compiled Vue frontend.
+
 ![Tempaltes](https://raw.githubusercontent.com/Wickedyoda/Yacht/master/readme_media/Yacht-Demo.gif "templates")
 
 ## Installation:
